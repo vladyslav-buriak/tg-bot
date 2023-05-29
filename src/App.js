@@ -6,6 +6,8 @@ import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
 import Form from './components/Form';
 function App() {
+  const { tg } = useTelegram();
+
 
   useEffect(() => {
     tg.ready();
