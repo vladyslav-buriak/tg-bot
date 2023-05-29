@@ -20,7 +20,7 @@ const Form = () => {
         } else {
             tg.MainButton.show()
         }
-    }, [])
+    }, [age, tel])
 
 
     const onChangeName = (e) => {
