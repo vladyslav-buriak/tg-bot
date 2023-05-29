@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useTelegram } from "../../hooks/useTelegram";
 
 const Form = () => {
@@ -8,6 +8,23 @@ const Form = () => {
     const [age, setAge] = useState("");
     const { tg } = useTelegram();
 
+    const onSendData = useCallback(() => {
+
+        const data = {
+            name,
+            tel,
+            age
+        }
+        tg.onSendData(JSON.stringify(data))
+    })
+
+    useEffect(() => {
+        tg.WebApp.onEvent('mainButtonClicked', onSendData)
+
+        return () => {
+            tg.WebApp.offEvent('mainButtonClicked', onSendData)
+        }
+    })
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'відправити данні'
@@ -20,7 +37,7 @@ const Form = () => {
         } else {
             tg.MainButton.show()
         }
-    }, [age, tel,tg.MainButton])
+    }, [age, tel, tg.MainButton])
 
 
     const onChangeName = (e) => {
