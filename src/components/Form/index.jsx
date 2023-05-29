@@ -16,7 +16,7 @@ const Form = () => {
             age
         }
         tg.onSendData(JSON.stringify(data))
-    })
+    },[])
 
     useEffect(() => {
         tg.WebApp.onEvent('mainButtonClicked', onSendData)
