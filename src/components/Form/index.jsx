@@ -15,12 +15,13 @@ const Form = () => {
             tel,
             age
         }
-        tg.onSendData(JSON.stringify(data))
+        tg.sendData(JSON.stringify(data))
     },[ name,
         tel,
         age,tg])
 
     useEffect(() => {
+   
         tg.WebApp.onEvent('mainButtonClicked', onSendData)
 
         return () => {
@@ -31,7 +32,7 @@ const Form = () => {
         tg.MainButton.setParams({
             text: 'відправити данні'
         })
-    })
+    },[])
 
     useEffect(() => {
         if (!tel || !age) {
