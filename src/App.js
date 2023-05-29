@@ -6,8 +6,6 @@ import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
 import Form from './components/Form';
 function App() {
-  const { onToggleButton, tg } = useTelegram();
-
 
   useEffect(() => {
     tg.ready();
