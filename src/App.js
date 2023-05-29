@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import './App.css';
 import { useTelegram } from './hooks/useTelegram';
 import Header from './components/Header';
+import { Route, Routes } from 'react-router-dom';
+import Form from './components/Form';
 function App() {
   const { onToggleButton, tg } = useTelegram();
 
@@ -13,8 +15,14 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
-      <button onClick={onToggleButton}>toggle</button>
+      <Header />
+      <Routes>
+        <Route>
+          <Route index element={<Form />}></Route>
+        </Route>
+
+      </Routes>
+
     </div>
   );
 }
