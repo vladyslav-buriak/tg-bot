@@ -32,7 +32,7 @@ const Form = () => {
         tg.MainButton.setParams({
             text: 'відправити данні'
         })
-    },[])
+    })
 
     useEffect(() => {
         if (!tel || !age) {
